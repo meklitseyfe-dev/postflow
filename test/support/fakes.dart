@@ -15,8 +15,10 @@ AppUser userFor(String email) => AppUser(id: 'user-$email', email: email);
 
 /// In-memory [AuthRepository] for tests.
 class FakeAuthRepository implements AuthRepository {
-  FakeAuthRepository({AppUser? signedInAs, this.requireEmailConfirmation = false})
-    : _user = signedInAs;
+  FakeAuthRepository({
+    AppUser? signedInAs,
+    this.requireEmailConfirmation = false,
+  }) : _user = signedInAs;
 
   final bool requireEmailConfirmation;
   final Map<String, String> passwords = {testEmail: testPassword};

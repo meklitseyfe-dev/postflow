@@ -13,9 +13,7 @@ Future<void> confirmAndSignOut(
     context: context,
     builder: (dialogContext) => AlertDialog(
       title: const Text('Log out?'),
-      content: const Text(
-        "You'll need to log in again to manage your posts.",
-      ),
+      content: const Text("You'll need to log in again to manage your posts."),
       actions: [
         TextButton(
           onPressed: () => Navigator.of(dialogContext).pop(false),
