@@ -80,10 +80,7 @@ class _AppShellState extends State<AppShell> {
         }
         return Scaffold(
           body: content,
-          bottomNavigationBar: _BottomBar(
-            current: _current,
-            onSelected: _goTo,
-          ),
+          bottomNavigationBar: _BottomBar(current: _current, onSelected: _goTo),
         );
       },
     );
