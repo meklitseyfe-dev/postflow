@@ -15,8 +15,8 @@ Plan, schedule and publish social-media content across every platform.
    (With the Supabase CLI: `supabase link` then `supabase db push`.)
 3. **Authentication → Providers → Email**: keep Email enabled. "Confirm email"
    is on by default — the app handles both on and off.
-4. **Project Settings → API**: copy the Project URL and the anon (or
-   publishable) key.
+4. **Project Settings → API Keys**: copy the Project URL and the
+   publishable key (`sb_publishable_…`). A legacy anon key also works.
 
 ## 2. App setup
 

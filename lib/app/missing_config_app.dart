@@ -21,7 +21,8 @@ class MissingConfigApp extends StatelessWidget {
             title: 'Supabase is not configured',
             message:
                 'Copy env.example.json to env.json, add your Supabase URL and '
-                'anon key, then run: flutter run --dart-define-from-file=env.json',
+                'publishable key, then run: '
+                'flutter run --dart-define-from-file=env.json',
             note: 'Setup required',
           ),
         ),
