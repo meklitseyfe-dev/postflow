@@ -102,8 +102,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return AuthLayout(
       title: 'Create your account',
       subtitle: 'Start planning content across all your channels.',
-      footer: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      footer: Wrap(
+        alignment: WrapAlignment.center,
+        crossAxisAlignment: WrapCrossAlignment.center,
         children: [
           const Text('Already have an account?'),
           TextButton(

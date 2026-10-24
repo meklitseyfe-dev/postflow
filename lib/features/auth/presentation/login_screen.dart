@@ -83,8 +83,9 @@ class _LoginScreenState extends State<LoginScreen> {
     return AuthLayout(
       title: 'Welcome back',
       subtitle: 'Log in to plan and schedule your posts.',
-      footer: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      footer: Wrap(
+        alignment: WrapAlignment.center,
+        crossAxisAlignment: WrapCrossAlignment.center,
         children: [
           const Text("Don't have an account?"),
           TextButton(onPressed: _openSignUp, child: const Text('Sign up')),
