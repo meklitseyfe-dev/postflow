@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:postflow/core/constants/app_constants.dart';
 import 'package:postflow/core/constants/app_spacing.dart';
 import 'package:postflow/core/widgets/postflow_logo.dart';
+import 'package:postflow/features/auth/domain/app_user.dart';
+import 'package:postflow/features/auth/domain/auth_repository.dart';
 import 'package:postflow/features/calendar/presentation/calendar_screen.dart';
 import 'package:postflow/features/composer/presentation/composer_screen.dart';
 import 'package:postflow/features/dashboard/presentation/dashboard_screen.dart';
+import 'package:postflow/features/profile/domain/profile_repository.dart';
 import 'package:postflow/features/settings/presentation/settings_screen.dart';
 import 'package:postflow/features/social_accounts/presentation/social_accounts_screen.dart';
 
@@ -34,7 +37,16 @@ enum AppSection {
 /// Hosts the main sections and switches between a bottom navigation bar
 /// (phones) and a side rail (tablets, desktop and web).
 class AppShell extends StatefulWidget {
-  const AppShell({super.key});
+  const AppShell({
+    super.key,
+    required this.user,
+    required this.authRepository,
+    required this.profileRepository,
+  });
+
+  final AppUser user;
+  final AuthRepository authRepository;
+  final ProfileRepository profileRepository;
 
   @override
   State<AppShell> createState() => _AppShellState();
@@ -59,7 +71,11 @@ class _AppShellState extends State<AppShell> {
       const ComposerScreen(),
       const CalendarScreen(),
       const SocialAccountsScreen(),
-      const SettingsScreen(),
+      SettingsScreen(
+        user: widget.user,
+        authRepository: widget.authRepository,
+        profileRepository: widget.profileRepository,
+      ),
     ];
 
     // IndexedStack keeps each section's state while switching tabs.

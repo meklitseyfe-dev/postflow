@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:postflow/app/postflow_app.dart';
 import 'package:postflow/core/widgets/postflow_logo.dart';
 import 'package:postflow/features/dashboard/presentation/dashboard_screen.dart';
 
+import 'support/fakes.dart';
+
 void main() {
+  Widget signedInApp() =>
+      buildTestApp(auth: FakeAuthRepository(signedInAs: userFor(testEmail)));
+
   NavigationBar navigationBar(WidgetTester tester) =>
       tester.widget<NavigationBar>(find.byType(NavigationBar));
 
@@ -23,7 +27,7 @@ void main() {
   testWidgets('dashboard shows branding, welcome and main sections', (
     tester,
   ) async {
-    await tester.pumpWidget(const PostFlowApp());
+    await tester.pumpWidget(signedInApp());
 
     expect(find.byType(PostFlowLogo), findsWidgets);
     expect(find.text('Welcome to PostFlow'), findsOneWidget);
@@ -35,7 +39,7 @@ void main() {
   testWidgets('bottom navigation switches between all sections', (
     tester,
   ) async {
-    await tester.pumpWidget(const PostFlowApp());
+    await tester.pumpWidget(signedInApp());
     expect(navigationBar(tester).selectedIndex, 0);
 
     await tapTab(tester, 'Create');
@@ -59,7 +63,7 @@ void main() {
   });
 
   testWidgets('Create Post button opens the composer', (tester) async {
-    await tester.pumpWidget(const PostFlowApp());
+    await tester.pumpWidget(signedInApp());
 
     await tester.tap(find.byKey(DashboardScreen.createPostButtonKey));
     await tester.pumpAndSettle();
@@ -73,7 +77,7 @@ void main() {
     tester.view.devicePixelRatio = 1.0;
     addTearDown(tester.view.reset);
 
-    await tester.pumpWidget(const PostFlowApp());
+    await tester.pumpWidget(signedInApp());
 
     expect(find.byType(NavigationRail), findsOneWidget);
     expect(find.byType(NavigationBar), findsNothing);

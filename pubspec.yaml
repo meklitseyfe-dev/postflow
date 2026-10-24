@@ -1,7 +1,7 @@
 name: postflow
 description: "PostFlow — plan, schedule and publish social media content across every platform."
 publish_to: "none"
-version: 0.1.0+1
+version: 0.2.0+2
 
 environment:
   sdk: ^3.8.0
@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  supabase_flutter: ^2.8.0
 
 dev_dependencies:
   flutter_test:
